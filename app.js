@@ -10,6 +10,7 @@ require('dotenv').config();
 app.use(express.json());
 connecttodb();
 const { STATUS_CODES } = require('http');
+var QRCode = require('qrcode')
 
 app.get('/',(req,res)=>{
     res.status(200).send("This is home page");
@@ -27,9 +28,13 @@ app.post('/upload',upload.single('image') ,async(req,res)=>{
             text,
             image:filename
         })
+        
         res.status(200).json({
             message: "Success"
         })
+        QRCode.toDataURL(text,{type:'terminal'}, function (err, url) {
+            console.log(url)
+          })
 });
 
 
