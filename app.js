@@ -40,5 +40,5 @@ app.post('/upload',upload.single('image') ,async(req,res)=>{
 
 
 app.listen(process.env.PORT,()=>{
-    console.log(`Server running`)
+    console.log(`Server running at the given port`)
 })
